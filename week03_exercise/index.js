@@ -47,8 +47,8 @@ const server = http.createServer((req, res) => {
             res.end(JSON.stringify({"total_salary": totalSalary}));
             return;
     }
-    res.setHeader('Content-Type','application/json');
-    res.end(`{"error": "${http.STATUS_CODES[404]}"}`);
+    // res.setHeader('Content-Type','application/json');
+    // res.end(`{"error": "${http.STATUS_CODES[404]}"}`);
     }
 });
 
