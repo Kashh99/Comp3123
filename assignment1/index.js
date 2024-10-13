@@ -10,7 +10,7 @@ const employeeRoutes = require("./routes/employeeRoutes");
 
 const app = express();
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded());
 
 // MongoDB connection without deprecated options
 mongoose
@@ -34,4 +34,3 @@ app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
 
-module.exports = app;
