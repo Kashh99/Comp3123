@@ -15,7 +15,7 @@ app.use(express.urlencoded());
 // MongoDB connection without deprecated options
 mongoose
   .connect(
-    "mongodb+mongodb+srv://admin:Km12112003@cluster0.eakoj.mongodb.net/test?retryWrites=true&w=majority&appName=Cluster0://admin:Km12112003@cluster0.eakoj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+    "mongodb+srv://admin:Km12112003@cluster0.eakoj.mongodb.net/test?retryWrites=true&w=majority&appName=Cluster0://admin:Km12112003@cluster0.eakoj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
   )
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.error("Error connecting to MongoDB:", err.message));
