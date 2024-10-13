@@ -21,7 +21,9 @@ mongoose
   .catch((err) => console.error("Error connecting to MongoDB:", err.message));
 
 
-app.get("/", (req, res => {res.send("Welcome")}));
+app.get("/", (req, res) => {
+  res.send("<h1>Welcome<h1>");
+});
 // Routes
 app.use("/api/v1/user", userRoutes); 
 app.use("/api/v1/emp", employeeRoutes);
