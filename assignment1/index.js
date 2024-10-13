@@ -24,6 +24,7 @@ mongoose
 app.get("/", (req, res) => {
   res.send("<h1>Welcome<h1>");
 });
+
 // Routes
 app.use("/api/v1/user", userRoutes); 
 app.use("/api/v1/emp", employeeRoutes);
