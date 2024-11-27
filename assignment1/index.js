@@ -2,6 +2,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require('dotenv');
 
+const cors = require('cors');
+
 // Load environment variables from .env file
 dotenv.config();
 
@@ -9,6 +11,10 @@ const userRoutes = require("./routes/userRoutes");
 const employeeRoutes = require("./routes/employeeRoutes");
 
 const app = express();
+
+app.use(cors({
+  origin: "*"
+}));
 app.use(express.json());
 app.use(express.urlencoded());
 

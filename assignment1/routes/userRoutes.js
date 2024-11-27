@@ -31,12 +31,16 @@ router.post('/signup',
   }
 );
 
-// Login route
+// Router updatedd
 router.post('/login', async (req, res) => {
-  const { email, password } = req.body;
+  const { identifier, password } = req.body;
 
   try {
-    const user = await User.findOne({ email });
+    // Check if the identifier is an email or username
+    const user = await User.findOne({
+      $or: [{ email: identifier }, { username: identifier }]
+    });
+
     if (!user) {
       return res.status(400).json({ message: 'Invalid credentials' });
     }
@@ -46,10 +50,11 @@ router.post('/login', async (req, res) => {
       return res.status(400).json({ message: 'Invalid credentials' });
     }
 
-    const token = jwt.sign({ userId: user._id }, 'jwt_secret', { expiresIn: '1h' });
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET || 'jwt_secret', { expiresIn: '1h' });
 
-    res.status(200).json({ message: 'Login successful', jwt_token: token });
+    res.status(200).json({ message: 'Login successful', token: token });
   } catch (error) {
+    console.error('Login error:', error);
     res.status(500).json({ message: 'Server error' });
   }
 });
